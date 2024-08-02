@@ -1,0 +1,171 @@
+<html>
+
+<head>
+  <title>Profile Saya</title>
+
+  <style>
+    body {
+      text-align: center;
+      color: black
+    }
+
+    a {
+      color: black !important;
+    }
+
+    a:hover {
+      color: white !important
+    }
+
+    nav>ul {
+      display: flex;
+      justify-content: center;
+    }
+
+    nav>ul>li {
+      list-style: none;
+      min-width: 100px;
+      border: 1px solid black;
+      margin: 4px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    nav>ul>li:hover {
+      background: black;
+      color: white;
+    }
+
+    .card {
+      border: 4px dotted;
+      margin-bottom: 12px;
+    }
+
+    .card>p {
+      text-align: justify;
+      margin-left: 10px;
+      margin-right: 10px;
+      padding-bottom: 12px;
+    }
+
+    #daftarKomentar {
+      text-align: left;
+    }
+
+    #daftarKomentar>li>span {
+      font-weight: 700
+    }
+
+    #loader {
+      border: 16px solid #f3f3f3;
+      /* Light grey */
+      border-top: 16px solid #3498db;
+      /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hiden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 id="clicky">Profil Jay</h1>
+
+  <nav>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#form">Form</a></li>
+      <li><a href="#komentar">Komentar</a></li>
+    </ul>
+  </nav>
+
+  <div id="class" class="card">
+    <h2>About</h2>
+    <!-- <div class="avatar">
+      <img src="https://picsum.photos/200/300" />
+    </div> -->
+    <p>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    </p>
+  </div>
+
+  <div id="form" class="card">
+    <h2>Form</h2>
+
+    <form id="formAdd" action="#" method="post">
+      <div class="form-group">
+        <label for="nama">Nama</label>
+        <input type="text" name="nama" id="nama" placeholder="Tulis nama kamu" />
+      </div>
+
+      <div class="form-group">
+        <label for="komentar">Komentar</label>
+        <textarea type="text" name="komentar" id="komentar" placeholder="Tulis komentar kamu"></textarea>
+      </div>
+
+      <div class="form-group">
+        <button type="submit" class="form-control">Kirim</button>
+      </div>
+
+
+    </form>
+  </div>
+
+  <div id="komentar" class="card">
+    <h2>Komentar</h2>
+
+    <ul id="daftarKomentar">
+      <li><span>Bis</span> : Test komentar</li>
+    </ul>
+  </div>
+
+  <div id="loader" class="hiden"></div>
+
+  <script>
+    const formAdd = document.getElementById('formAdd')
+    const nama=document.getElementById('nama')
+    const komentar=document.getElementById('komentar')
+    const daftarKomentar=document.getElementById('daftarKomentar')
+
+
+    formAdd.onsubmit = (e)=>  {
+      e.preventDefault()
+
+      console.log('nama',nama.value)
+      console.log('komentar',komentar.value)
+
+      if(nama.value==''){
+        alert('Nama kosong')
+        return
+      }
+
+      if(komentar.value==''){
+        alert('Komentar kosong')
+        return
+      }
+
+      daftarKomentar.innerHTML+=`<li><span>${nama.value}</span> : ${komentar.value}</li>`
+     
+    }
+  </script>
+</body>
+
+</html>
